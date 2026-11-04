@@ -1,0 +1,271 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FANTASY PS - PS4 Exploit Host</title>
+
+<style>
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    background: #111820;
+    color: #e8edf2;
+    font-family: Arial, sans-serif;
+}
+
+header {
+    background: #080d13;
+    border-bottom: 2px solid #1688d4;
+    padding: 18px 15px;
+    text-align: center;
+}
+
+.logo {
+    font-size: 27px;
+    font-weight: bold;
+    letter-spacing: 2px;
+    color: #fff;
+}
+
+.logo span {
+    color: #1688d4;
+}
+
+.subtitle {
+    color: #9baab8;
+    font-size: 12px;
+    margin-top: 7px;
+}
+
+.container {
+    width: 94%;
+    max-width: 850px;
+    margin: 25px auto;
+}
+
+.panel {
+    background: #1b2632;
+    border: 1px solid #344556;
+    border-radius: 7px;
+    padding: 18px;
+    margin-bottom: 16px;
+}
+
+h2 {
+    font-size: 17px;
+    margin: 0 0 16px;
+    color: #58b9ff;
+    border-bottom: 1px solid #344556;
+    padding-bottom: 12px;
+}
+
+label {
+    display: block;
+    margin: 14px 0 8px;
+    font-size: 14px;
+}
+
+select {
+    width: 100%;
+    padding: 13px;
+    background: #101923;
+    color: white;
+    border: 1px solid #42566b;
+    border-radius: 5px;
+    font-size: 15px;
+}
+
+button {
+    width: 100%;
+    padding: 14px;
+    border: 0;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 15px;
+    font-weight: bold;
+    margin-top: 12px;
+}
+
+.primary {
+    background: #087fc5;
+    color: white;
+}
+
+.primary:hover {
+    background: #109de9;
+}
+
+.secondary {
+    background: #344556;
+    color: white;
+}
+
+.status {
+    background: #101923;
+    border: 1px solid #344556;
+    padding: 12px;
+    border-radius: 5px;
+    color: #62d99b;
+    font-size: 13px;
+}
+
+#console {
+    height: 180px;
+    overflow-y: auto;
+    background: #080d12;
+    color: #55d88b;
+    padding: 13px;
+    border-radius: 5px;
+    font-family: monospace;
+    font-size: 12px;
+    line-height: 1.8;
+    white-space: pre-wrap;
+}
+
+.support {
+    display: block;
+    text-decoration: none;
+    text-align: center;
+    background: #087fc5;
+    color: white;
+    padding: 14px;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+footer {
+    text-align: center;
+    padding: 22px 10px;
+    color: #8493a1;
+    font-size: 12px;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <div class="logo">FANTASY <span>PS</span></div>
+    <div class="subtitle">PLAYSTATION 4 EXPLOIT HOST</div>
+</header>
+
+<main class="container">
+
+    <div class="panel">
+        <h2>System Information</h2>
+
+        <div class="status" id="status">
+            System Ready - Waiting for Firmware Selection
+        </div>
+
+        <label for="firmware">Select Firmware</label>
+        <select id="firmware">
+            <option value="">-- Select PS4 Firmware --</option>
+            <option value="9.00">9.00</option>
+            <option value="10.01">10.01</option>
+            <option value="11.00">11.00</option>
+            <option value="other">Other / Not listed</option>
+        </select>
+
+        <label for="exploit">Select Exploit</label>
+        <select id="exploit">
+            <option value="">-- Select Exploit --</option>
+        </select>
+
+        <button class="secondary" onclick="autoSelect()">
+            AUTO SELECT
+        </button>
+
+        <button class="primary" onclick="startExploit()">
+            START JAILBREAK
+        </button>
+    </div>
+
+    <div class="panel">
+        <h2>Console Log</h2>
+        <div id="console">FANTASY PS SYSTEM
+-------------------------
+System initialized.
+Waiting for user input...
+</div>
+    </div>
+
+    <div class="panel">
+        <h2>Technical Support</h2>
+        <a class="support"
+           href="https://wa.me/201285427600"
+           target="_blank">
+           CONTACT FANTASY PS SUPPORT
+        </a>
+    </div>
+
+</main>
+
+<footer>
+    FANTASY PS © 2026
+    <br><br>
+    PlayStation 4 Exploit Host
+</footer>
+
+<script>
+const firmware = document.getElementById("firmware");
+const exploit = document.getElementById("exploit");
+const consoleBox = document.getElementById("console");
+const statusBox = document.getElementById("status");
+
+function log(message) {
+    consoleBox.textContent += "\n> " + message;
+    consoleBox.scrollTop = consoleBox.scrollHeight;
+}
+
+firmware.addEventListener("change", function() {
+    exploit.innerHTML = '<option value="">-- Select Exploit --</option>';
+
+    if (!this.value) {
+        statusBox.textContent = "Waiting for Firmware Selection";
+        log("Firmware selection cleared.");
+        return;
+    }
+
+    statusBox.textContent = "Selected Firmware: " + this.value;
+    log("Firmware selected: " + this.value);
+    log("Checking compatible exploit files...");
+
+    const option = document.createElement("option");
+    option.value = "pending";
+    option.textContent = "Exploit files not installed yet";
+    exploit.appendChild(option);
+});
+
+function autoSelect() {
+    if (!firmware.value) {
+        alert("Please select your PS4 Firmware first.");
+        return;
+    }
+
+    log("Auto selection requested.");
+    log("Compatible exploit database is not installed yet.");
+    alert("Exploit files must be installed before auto selection.");
+}
+
+function startExploit() {
+    if (!firmware.value) {
+        alert("Please select Firmware first.");
+        return;
+    }
+
+    log("Jailbreak requested.");
+    log("No exploit payload is installed.");
+    log("Waiting for compatible files.");
+
+    alert("Exploit files are not installed yet. No jailbreak was executed.");
+}
+</script>
+
+</body>
+</html>
